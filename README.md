@@ -5,7 +5,7 @@ This is project for CS585 class, Cal Poly Pomona.
 
 ##Start to work with plug-in
 
-![](https://cloud.githubusercontent.com/assets/17581141/20360890/5ea50a8c-abea-11e6-99b8-e1e28fec4af9.PNG)![]
+![](https://cloud.githubusercontent.com/assets/17581141/20361079/1a448f56-abeb-11e6-9b4a-1dc697bdad0c.PNG)
 
 
 ##Reference 
