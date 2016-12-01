@@ -21,19 +21,26 @@ free library as well. Since my project will work on plug-in, so I created Parser
 
 ![](http://www.eclipse.org/articles/Article-JavaCodeManipulation_AST/images/java-model-overview.png)
 
-
 ##Start to work with plug-in
 ######Layered Libraries
 ![](https://cloud.githubusercontent.com/assets/17581141/20573782/5b54763e-b166-11e6-953f-7735fe6e7d91.gif)
 ######Architecture of Eclipse based applications
 ![](https://cloud.githubusercontent.com/assets/17581141/20361079/1a448f56-abeb-11e6-9b4a-1dc697bdad0c.PNG)
 
+##References Pictures
+######Factory Design Pattern
+![](https://www.tutorialspoint.com/design_pattern/images/factory_pattern_uml_diagram.jpg)
+######Interpreter Design Pattern
+![](https://www.tutorialspoint.com/design_pattern/images/interpreter_pattern_uml_diagram.jpg)
+######Step to apply algorithm by HEDGHOG
+![](https://cloud.githubusercontent.com/assets/17581141/20803438/157239fa-b7a4-11e6-97f7-2791dd9e6e52.PNG)
 
 ##References
 [Eclipse Plugins Exposed](http://www.onjava.com/pub/a/onjava/2005/02/09/eclipse.html) <br />
 [Eclipse RCP Tutorial](http://www.vogella.com/tutorials/EclipseRCP/article.html) <br />
 [Abstract Syntax Tree](http://www.eclipse.org/articles/article.php?file=Article-JavaCodeManipulation_AST/index.html)<br />
-[Create Marker for Plug-in](https://www.ibm.com/developerworks/opensource/tutorials/os-eclipse-plugin-guide/#listing1)
+[Create Marker for Plug-in](https://www.ibm.com/developerworks/opensource/tutorials/os-eclipse-plugin-guide/#listing1)<br />
+[Design Pattern Tutorial](https://www.tutorialspoint.com/design_pattern/factory_pattern.htm)
 
 ######Research papers related this project:
 [HEDGEHOG] (http://www.bandlem.com/Alex/Papers/PhDThesis.pdf)
