@@ -4,9 +4,13 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IPackageFragment;
+import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
@@ -18,8 +22,7 @@ import org.eclipse.jdt.core.dom.SimpleName;
 import org.eclipse.jdt.core.dom.SimplePropertyDescriptor;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
-
-
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jdt.core.dom.AST;
 
 public class InitialPatternObj {
@@ -39,7 +42,9 @@ public class InitialPatternObj {
 		parser.setKind(ASTParser.K_COMPILATION_UNIT);
 		cu = (CompilationUnit) parser.createAST(null);
 		
-		AST_FactoryPattern ast = new AST_FactoryPattern(factoryPatternObjs);
+		//IFile file = new IFile(factoryPatternObjs.caller.getPath());
+		
+		AST_FactoryPattern ast = new AST_FactoryPattern(factoryPatternObjs, cu, factoryPatternObjs.caller);
 		ast.process(cu);
 		
 		System.out.println("Debug factoryObj " + ast.factoryObj);
@@ -128,18 +133,25 @@ public class InitialPatternObj {
 		try {
 			for(ICompilationUnit javaFile : selectedPackage.getCompilationUnits()){
 				
-			
+				//ISelection selection;
+				IType primaryType = javaFile.findPrimaryType();
+				System.out.println("ICompilationUnit: " + javaFile.getElementName() + " is Interface --> " + primaryType.isInterface());	
+				System.out.println("Debug:" + javaFile.getPath());
 				
+				/*
+				IWorkspace space = ResourcesPlugin.getWorkspace();	
+				IFile input = (IFile)space.getRoot().findMember(javaFile.getPath());
+				*/
 				String source = javaFile.getSource();
-				String interface_checker = "interface";
+				//String interface_checker = "interface";
 				String caller_checker = "public static void main(String[] args)";
 				String implemented_checker = "implements";
 				
-				boolean interface_obj = source.contains(interface_checker);
+				//boolean interface_obj = source.contains(interface_checker);
 				boolean checker_obj = source.contains(caller_checker);
 				boolean implemented_obj = source.contains(implemented_checker);
 				
-				if(interface_obj == true){
+				if(primaryType.isInterface() == true){
 					factoryPatternObjs.interfaceObj = javaFile;
 				}else if(checker_obj == true){
 					factoryPatternObjs.caller = javaFile;

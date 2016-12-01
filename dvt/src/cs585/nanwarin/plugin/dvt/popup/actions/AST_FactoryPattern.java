@@ -1,7 +1,16 @@
 package cs585.nanwarin.plugin.dvt.popup.actions;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -12,23 +21,30 @@ import org.eclipse.jdt.core.dom.SimpleName;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
+import org.eclipse.jface.text.Position;
 
 public class AST_FactoryPattern extends ASTVisitor{
 
 	FactoryPatternObjs factoryPatternObjs;
 	String factoryObj;
+	CompilationUnit unit;
+	ICompilationUnit iUnit;
 	
-	public AST_FactoryPattern(FactoryPatternObjs factoryPatternObjs){
+	public AST_FactoryPattern(FactoryPatternObjs factoryPatternObjs, CompilationUnit unit, ICompilationUnit iUnit){
 		this.factoryPatternObjs = factoryPatternObjs;
 		factoryObj = null;
+		this.unit = unit;
+		this.iUnit = iUnit;
 	}
 	
 	public boolean visit(VariableDeclarationFragment node) {
 		SimpleName name = node.getName();
-		Expression test = node.getInitializer();
+		Expression expression = node.getInitializer();
 		String checkFactoryObj = null;
 		
-		System.out.println("Debug:Visit: " + test);
+		String callerObj;
+		
+		System.out.println("Debug:Visit: Expression -- > " + expression);
 	
 		try {
 			checkFactoryObj = factoryPatternObjs.factoryObj.getChildren()[1].getElementName();
@@ -37,14 +53,25 @@ public class AST_FactoryPattern extends ASTVisitor{
 			e.printStackTrace();
 		}
 		
-		if(test.toString().contains(checkFactoryObj)){
+		if(expression.toString().contains(checkFactoryObj)){
 			factoryObj = name.getIdentifier();
 		}else if(factoryObj == null){
-			
+			//Highlight no implement obj;
+		}else if(!expression.toString().contains(factoryObj)){
+			System.out.println("Wrong pattern applied to --> " + name.getIdentifier() + " This statement is wrong " + expression.toString());
+			System.out.println("Line number --> " + unit.getLineNumber(node.getStartPosition()));
+			Position newPosition = new Position(node.getStartPosition());
+			//	ITextEditor editorArea = (ITextEditor) editorPart;
+			IWorkspace space = ResourcesPlugin.getWorkspace();	
+			IFile input = (IFile)space.getRoot().findMember(this.iUnit.getPath());
+			IMarker marker = new MyMarkerFactory().createMarker(input, newPosition, "Wrong Design Pattern has been applied --> " + expression.toString());
+		
 		}
 		
 		return false; // do not continue 
 	}
+	
+
 	
 	
 	/*

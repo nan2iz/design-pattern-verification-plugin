@@ -26,11 +26,36 @@
          </action>
       </objectContribution>
    </extension>
-   <extension
-         point="org.eclipse.core.resources.markers">
-      <Generic>
-         TEST
-      </Generic>
+   
+   <extension point="org.eclipse.core.resources.markers"
+      id="cs585.nanwarin.marker"
+      name="My Marker">
+      <super type="org.eclipse.core.resources.textmarker"/>
+      <super type="org.eclipse.core.resources.marker"/>
+      <persistent value="true"/>
+	</extension> 
+   
+   <!-- Annotation specification:- describes what the annotation will look like and its properties -->
+   <extension point="org.eclipse.ui.editors.markerAnnotationSpecification"
+     id="myannotationspecification"
+     name="MyAnnotation">
+
+     <specification
+          annotationType="cs585.nanwarin.annotation"
+          label="MyAnnotation"
+          icon="icons/error.jpg"
+          overviewRulerPreferenceKey="clruler"
+          overviewRulerPreferenceValue="true"
+          colorPreferenceKey="clcolor"
+          colorPreferenceValue="255,255,0"
+          textPreferenceKey="cltext"
+          textPreferenceValue="true"
+          verticalRulerPreferenceKey="clvertical"
+          verticalRulerPreferenceValue="true"
+          textStylePreferenceKey="clstyle"
+          textStylePreferenceValue="BOX">
+     </specification>
    </extension>
+   
 
 </plugin>
