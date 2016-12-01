@@ -55,6 +55,7 @@ public class MyMarkerFactory {
 	public static TextSelection getTextSelection() {
 
 		ISelection selection = Activator.getActiveWorkbenchWindow().getSelectionService().getSelection();
+		
 		if (selection instanceof TextSelection) {
 			return (TextSelection)selection;
 		}

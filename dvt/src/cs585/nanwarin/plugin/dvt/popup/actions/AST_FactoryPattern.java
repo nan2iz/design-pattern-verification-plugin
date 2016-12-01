@@ -91,7 +91,7 @@ public class AST_FactoryPattern extends ASTVisitor{
 	public static void createMarker(String errorMessage, Position pos){
 		IWorkspace space = ResourcesPlugin.getWorkspace();	
 		IFile input = (IFile)space.getRoot().findMember(iUnit.getPath());
-		TextSelection selection = MyMarkerFactory.getTextSelection();
+	//	TextSelection selection = MyMarkerFactory.getTextSelection(); // --> Get from active editor
 		IMarker marker = new MyMarkerFactory().createMarker(input, pos, errorMessage);
 		MyMarkerFactory.addAnnotation(marker, pos, Activator.getEditor());
 	}
