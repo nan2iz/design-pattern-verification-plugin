@@ -22,13 +22,17 @@ import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jface.text.Position;
+import org.eclipse.jface.text.TextSelection;
+
+
+import cs585.nanwarin.plugin.dvt.Activator;
 
 public class AST_FactoryPattern extends ASTVisitor{
 
 	FactoryPatternObjs factoryPatternObjs;
 	String factoryObj;
 	CompilationUnit unit;
-	ICompilationUnit iUnit;
+	static ICompilationUnit iUnit;
 	
 	public AST_FactoryPattern(FactoryPatternObjs factoryPatternObjs, CompilationUnit unit, ICompilationUnit iUnit){
 		this.factoryPatternObjs = factoryPatternObjs;
@@ -41,6 +45,8 @@ public class AST_FactoryPattern extends ASTVisitor{
 		SimpleName name = node.getName();
 		Expression expression = node.getInitializer();
 		String checkFactoryObj = null;
+		
+		String errorMessage  = "";
 		
 		String callerObj;
 		
@@ -60,18 +66,24 @@ public class AST_FactoryPattern extends ASTVisitor{
 		}else if(!expression.toString().contains(factoryObj)){
 			System.out.println("Wrong pattern applied to --> " + name.getIdentifier() + " This statement is wrong " + expression.toString());
 			System.out.println("Line number --> " + unit.getLineNumber(node.getStartPosition()));
-			Position newPosition = new Position(node.getStartPosition());
-			//	ITextEditor editorArea = (ITextEditor) editorPart;
-			IWorkspace space = ResourcesPlugin.getWorkspace();	
-			IFile input = (IFile)space.getRoot().findMember(this.iUnit.getPath());
-			IMarker marker = new MyMarkerFactory().createMarker(input, newPosition, "Wrong Design Pattern has been applied --> " + expression.toString());
-		
+			
+			errorMessage = "Wrong pattern has been applied !!!!   Wrong statement --> [" + expression.toString() + "]";
+			
+			Position newPosition = new Position(node.getStartPosition());	
+			createMarker(errorMessage, newPosition);		
 		}
 		
 		return false; // do not continue 
 	}
 	
 
+	public static void createMarker(String errorMessage, Position pos){
+		IWorkspace space = ResourcesPlugin.getWorkspace();	
+		IFile input = (IFile)space.getRoot().findMember(iUnit.getPath());
+		TextSelection selection = MyMarkerFactory.getTextSelection();
+		IMarker marker = new MyMarkerFactory().createMarker(input, pos, errorMessage);
+		MyMarkerFactory.addAnnotation(marker, pos, Activator.getEditor());
+	}
 	
 	
 	/*

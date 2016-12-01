@@ -6,11 +6,14 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.jface.text.Position;
+import org.eclipse.jface.text.TextSelection;
 import org.eclipse.jface.text.source.IAnnotationModel;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.ui.texteditor.SimpleMarkerAnnotation;
+
+import cs585.nanwarin.plugin.dvt.Activator;
 
 public class MyMarkerFactory {
 
@@ -39,14 +42,23 @@ public class MyMarkerFactory {
 		return marker;
 	}
 	
-	public static void addAnnotation(IMarker marker, ITextSelection selection, ITextEditor editor){
+	public static void addAnnotation(IMarker marker, Position pos, ITextEditor editor){
 		IDocumentProvider idp = editor.getDocumentProvider();
 		IDocument document = idp.getDocument(editor.getEditorInput());
 		IAnnotationModel iamf = idp.getAnnotationModel(editor.getEditorInput());
 		SimpleMarkerAnnotation ma = new SimpleMarkerAnnotation(ANNOTATION, marker);
 		iamf.connect(document);
-		iamf.addAnnotation(ma,new Position(selection.getOffset(),selection.getLength()));
+		iamf.addAnnotation(ma, pos);
 		iamf.disconnect(document);
+	}
+	
+	public static TextSelection getTextSelection() {
+
+		ISelection selection = Activator.getActiveWorkbenchWindow().getSelectionService().getSelection();
+		if (selection instanceof TextSelection) {
+			return (TextSelection)selection;
+		}
+		return null;
 	}
 	
 }
