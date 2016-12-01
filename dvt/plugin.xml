@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.jdt.core.IPackageFragment"
+            id="cs585.nanwarin.plugin.dvt.contribution1">
+         <menu
+               label="[DVT]"
+               path="additions"
+               id="cs585.nanwarin.plugin.dvt.menu1"
+               icon="icon/cat_icon.png">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Verify Factorty Pattern"
+               class="cs585.nanwarin.plugin.dvt.popup.actions.VerifyFactoryPattern"
+               menubarPath="cs585.nanwarin.plugin.dvt.menu1/group1"
+               enablesFor="1"
+               id="cs585.nanwarin.plugin.dvt.newAction"
+               icon="icon/cat_icon.png">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.resources.markers">
+      <Generic>
+         TEST
+      </Generic>
+   </extension>
+
+</plugin>
