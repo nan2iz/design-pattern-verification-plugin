@@ -59,15 +59,26 @@ public class AST_FactoryPattern extends ASTVisitor{
 			e.printStackTrace();
 		}
 		
+		//check the variable should not start with upper case
+		if(Character.isUpperCase(name.getIdentifier().charAt(0))){
+			errorMessage = "Variable name should not start with Upper Case --> [ " + name.getIdentifier() + " ]";
+			
+			Position newPosition = new Position(node.getStartPosition());	
+			createMarker(errorMessage, newPosition);		
+		}
+		
+		
 		if(expression.toString().contains(checkFactoryObj)){
 			factoryObj = name.getIdentifier();
 		}else if(factoryObj == null){
 			//Highlight no implement obj;
 		}else if(!expression.toString().contains(factoryObj)){
-			System.out.println("Wrong pattern applied to --> " + name.getIdentifier() + " This statement is wrong " + expression.toString());
+			//Call wrongly
+			
+			System.out.println("Wrong pattern applied to --> " + name.getIdentifier() + "; This statement is wrong -->" + expression.toString());
 			System.out.println("Line number --> " + unit.getLineNumber(node.getStartPosition()));
 			
-			errorMessage = "Wrong pattern has been applied !!!!   Wrong statement --> [" + expression.toString() + "]";
+			errorMessage = "Wrong pattern has been applied !!!!   Wrong statement --> [ " + expression.toString() + " ]";
 			
 			Position newPosition = new Position(node.getStartPosition());	
 			createMarker(errorMessage, newPosition);		
