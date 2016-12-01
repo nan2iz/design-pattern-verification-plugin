@@ -17,16 +17,16 @@
             </separator>
          </menu>
          <action
-               label="Verify Factorty Pattern"
+               label="Factory Pattern -- Initial Object"
                class="cs585.nanwarin.plugin.dvt.popup.actions.VerifyFactoryPattern"
                menubarPath="cs585.nanwarin.plugin.dvt.menu1/group1"
                enablesFor="1"
-               id="cs585.nanwarin.plugin.dvt.newAction"
+               id="cs585.nanwarin.plugin.dvt.initialObj"
                icon="icon/cat_icon.png">
          </action>
       </objectContribution>
    </extension>
-   
+ 
    <extension point="org.eclipse.core.resources.markers"
       id="cs585.nanwarin.marker"
       name="My Marker">

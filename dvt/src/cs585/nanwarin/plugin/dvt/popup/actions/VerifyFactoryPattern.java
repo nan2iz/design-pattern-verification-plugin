@@ -13,6 +13,9 @@ public class VerifyFactoryPattern implements IObjectActionDelegate {
 
 	private Shell shell;
 	private ISelection selection;
+	private IPackageFragment selectedPackage;
+	
+	private InitialPatternObj initialPattern;
 	
 	/**
 	 * Constructor for Action1.
@@ -33,14 +36,20 @@ public class VerifyFactoryPattern implements IObjectActionDelegate {
 	 */
 	public void run(IAction action) {
 		
-		IPackageFragment selectedPackage = (IPackageFragment) ((IStructuredSelection)selection).getFirstElement();
-		InitialPatternObj initialPattern = new InitialPatternObj(selectedPackage);
-		initialPattern.verifyCaller();
+		System.out.println("Action ID " + action.getId());
+
+		if(action.getId().equals("cs585.nanwarin.plugin.dvt.initialObj")){
+			selectedPackage = (IPackageFragment) ((IStructuredSelection)selection).getFirstElement();
+			initialPattern = new InitialPatternObj(selectedPackage);
+			initialPattern.verifyCaller();
+			
+			MessageDialog.openInformation(
+					shell,
+					"Dvt",
+					"Complete");
+		}
 		
-		MessageDialog.openInformation(
-			shell,
-			"Dvt",
-			"Verify Factorty Pattern was executed.");
+		
 	}
 
 	/**
