@@ -17,7 +17,7 @@
             </separator>
          </menu>
          <action
-               label="Factory Pattern -- Initial Object"
+               label="Factory Pattern Verification"
                class="cs585.nanwarin.plugin.dvt.popup.actions.VerifyFactoryPattern"
                menubarPath="cs585.nanwarin.plugin.dvt.menu1/group1"
                enablesFor="1"

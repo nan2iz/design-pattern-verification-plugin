@@ -1,28 +1,17 @@
 package cs585.nanwarin.plugin.dvt.popup.actions;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.Expression;
-import org.eclipse.jdt.core.dom.FieldDeclaration;
-import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.SimpleName;
-import org.eclipse.jdt.core.dom.Type;
-import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jface.text.Position;
-import org.eclipse.jface.text.TextSelection;
 
 
 import cs585.nanwarin.plugin.dvt.Activator;
@@ -33,13 +22,13 @@ public class AST_FactoryPattern extends ASTVisitor{
 	String factoryObj;
 	CompilationUnit unit;
 	static ICompilationUnit iUnit;
-	
+
 	public AST_FactoryPattern(FactoryPatternObjs factoryPatternObjs, CompilationUnit unit, ICompilationUnit iUnit){
 		this.factoryPatternObjs = factoryPatternObjs;
-		factoryObj = null;
+		this.factoryObj = null;
 		this.unit = unit;
 		this.iUnit = iUnit;
-	}
+		}
 	
 	public boolean visit(VariableDeclarationFragment node) {
 		SimpleName name = node.getName();
@@ -53,7 +42,7 @@ public class AST_FactoryPattern extends ASTVisitor{
 		System.out.println("Debug:Visit: Expression -- > " + expression);
 	
 		try {
-			checkFactoryObj = factoryPatternObjs.factoryObj.getChildren()[1].getElementName();
+			checkFactoryObj = factoryPatternObjs.getFactoryObj().getChildren()[1].getElementName();
 		} catch (JavaModelException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,7 +50,10 @@ public class AST_FactoryPattern extends ASTVisitor{
 		
 		//check the variable should not start with upper case
 		if(Character.isUpperCase(name.getIdentifier().charAt(0))){
-			errorMessage = "Variable name should not start with Upper Case --> [ " + name.getIdentifier() + " ]";
+			String newName = "";
+			newName += Character.toLowerCase(name.getIdentifier().charAt(0));
+			newName += name.getIdentifier().substring(1);
+			errorMessage = "Variable name should not start with Upper Case --> [ " + name.getIdentifier() + " ], correct to --> " + newName;
 			
 			Position newPosition = new Position(node.getStartPosition());	
 			createMarker(errorMessage, newPosition);		
@@ -81,7 +73,11 @@ public class AST_FactoryPattern extends ASTVisitor{
 			errorMessage = "Wrong pattern has been applied !!!!   Wrong statement --> [ " + expression.toString() + " ]";
 			
 			Position newPosition = new Position(node.getStartPosition());	
-			createMarker(errorMessage, newPosition);		
+			createMarker(errorMessage, newPosition);	
+			
+			//Add another mark to show to correction
+			errorMessage = "To correct, change to --> " + name.getIdentifier() + " = new " + factoryObj + "();";
+			createMarker(errorMessage, newPosition);
 		}
 		
 		return false; // do not continue 
