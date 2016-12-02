@@ -36,10 +36,7 @@ public class AST_FactoryPattern extends ASTVisitor{
 		String checkFactoryObj = null;
 		
 		String errorMessage  = "";
-		
-		String callerObj;
-		
-		System.out.println("Debug:Visit: Expression -- > " + expression);
+
 	
 		try {
 			checkFactoryObj = factoryPatternObjs.getFactoryObj().getChildren()[1].getElementName();
