@@ -38,9 +38,10 @@ And mainly of project will work on ICompilationUnit, in order to manipulate Java
 ![](http://www.eclipse.org/articles/Article-JavaCodeManipulation_AST/images/java-model-overview.png)<br />
 *Figure from* [AST Article](http://www.eclipse.org/articles/article.php?file=Article-JavaCodeManipulation_AST/index.html)
 
-    <br />
-    It's really important to understand AST Visitor, because it will help you figure out the way to manipulate the java source code. And if you understand it well, it will help your life more easier'
-    <br /> This is some code example. [Example AST Visitor](http://www.programcreek.com/java-api-examples/index.php?api=org.eclipse.jdt.core.dom.ASTVisitor)
+<br />
+It's really important to understand AST Visitor, because it will help you figure out the way to manipulate the java source code. And if you understand it well, it will help your life more easier'
+<br /> 
+This is some code example. [Example AST Visitor](http://www.programcreek.com/java-api-examples/index.php?api=org.eclipse.jdt.core.dom.ASTVisitor)
 
 ___
 ##Start to work with plug-in
