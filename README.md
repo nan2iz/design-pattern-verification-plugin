@@ -5,6 +5,11 @@ This is project for CS585 class, Cal Poly Pomona.
 ##Briefly Project Workflow
 ![](https://cloud.githubusercontent.com/assets/17581141/20818085/3ead1650-b7e0-11e6-8bef-54d866b8f6be.png)
 
+##How to run this application [Debugging mode]
+- Run as 
+- Right click at package area and select DVT option and selection Verify option
+![](https://cloud.githubusercontent.com/assets/17581141/20822945/19dbeeae-b804-11e6-90d0-af8848a18e1d.png)
+
 ##Manipulate Java Source
 
 ##The Abstract Syntax Tree (AST)
