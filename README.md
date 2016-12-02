@@ -31,8 +31,10 @@ The AST is the base framework for many powerful tools of the Eclipse IDE.
 
 Parsing Source:
 	Basically we need to translate Java Source code to AST. You can implement your own class by using org.eclipse.jdt.core.dom.ASTParser or you also can download 
-free library as well. Since my project will work on plug-in, so I created Parser Class by myself for future extention purpose.
+free library as well. Since my project will work on plug-in, so I created Parser Class by myself for future extention purpose. <br />
 
+Below figure shows the Java Model overview. This project first select IPackageFragment in order to pull all Java Classes under same pacakge to identify type of class, if it is interface or else. <br />
+And mainly of project will work on ICompilationUnit, in order to manipulate Java Source Code.
 ![](http://www.eclipse.org/articles/Article-JavaCodeManipulation_AST/images/java-model-overview.png)<br />
 *Figure from* [AST Article](http://www.eclipse.org/articles/article.php?file=Article-JavaCodeManipulation_AST/index.html)
 
@@ -41,9 +43,15 @@ ___
 ######Layered Libraries
 ![](https://cloud.githubusercontent.com/assets/17581141/20573782/5b54763e-b166-11e6-953f-7735fe6e7d91.gif)<br />
 *Figure from* [RCP Tutorial](http://www.vogella.com/tutorials/EclipseRCP/article.html)
-######Architecture of Eclipse based applications
-![](https://cloud.githubusercontent.com/assets/17581141/20361079/1a448f56-abeb-11e6-9b4a-1dc697bdad0c.PNG)<br />
-*Figure from* [RCP Tutorial](http://www.vogella.com/tutorials/EclipseRCP/article.html)
+
+<br />
+Before we start, please download Eclipse Software Development from this link --> [Download](http://download.eclipse.org/eclipse/downloads/). <br />
+
+In this project we create popup menu when we perform right-click at Package under Package Explorer section.
+The tutorial is in this link [Create Pop-up Commands](http://www.vogella.com/tutorials/EclipseCommands/article.html)
+<br />
+The plugin.xml of this project is in this link [plugin.xml](https://github.com/nan2iz/design_pattern_verification_plugin/blob/master/dvt/plugin.xml)
+
 
 ___
 ##References Pictures
