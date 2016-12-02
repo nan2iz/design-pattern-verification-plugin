@@ -2,8 +2,8 @@
 This plug-in designed to verify design pattern in Eclipse editor.
 This is project for CS585 class, Cal Poly Pomona.
 
-
-
+##Briefly Project Workflow
+![](https://cloud.githubusercontent.com/assets/17581141/20818085/3ead1650-b7e0-11e6-8bef-54d866b8f6be.png)
 
 ##Manipulate Java Source
 
