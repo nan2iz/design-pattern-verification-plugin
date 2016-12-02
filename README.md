@@ -12,9 +12,9 @@ ___
 ![](https://cloud.githubusercontent.com/assets/17581141/20822945/19dbeeae-b804-11e6-90d0-af8848a18e1d.png)
 
 ####Example result
-Regarding Factory Pattern, we should not call implemented class from interface directly. We should call ShapFactory class in order to use this implemented objects
+Regarding Factory Pattern, we should not call implemented class from interface directly. We should call ShapFactory class in order to use this implemented objects<br />
 ![](https://cloud.githubusercontent.com/assets/17581141/20852296/f856f4fe-b899-11e6-992d-d5cde3ec6689.png)
-After run the plug-in, the plug-in will add mark at the line that code is wrote wrongly, and give recommendation for correct the wrong pattern
+After run the plug-in, the plug-in will add mark at the line that code is wrote wrongly, and give recommendation for correct the wrong pattern<br />
 ![](https://cloud.githubusercontent.com/assets/17581141/20852299/fc288228-b899-11e6-90a8-826250c8a7c6.png)
 
 ___
@@ -48,11 +48,11 @@ ___
 ___
 ##References Pictures
 ######Factory Design Pattern
-![](https://www.tutorialspoint.com/design_pattern/images/factory_pattern_uml_diagram.jpg)
-*Figure from* [Design Pattern Tutorial](https://www.tutorialspoint.com/design_pattern/factory_pattern.htm)<br />
+![](https://www.tutorialspoint.com/design_pattern/images/factory_pattern_uml_diagram.jpg)<br />
+*Figure from* [Design Pattern Tutorial](https://www.tutorialspoint.com/design_pattern/factory_pattern.htm)
 ######Interpreter Design Pattern
-![](https://www.tutorialspoint.com/design_pattern/images/interpreter_pattern_uml_diagram.jpg)
-*Figure from* [Design Pattern Tutorial](https://www.tutorialspoint.com/design_pattern/factory_pattern.htm)<br />
+![](https://www.tutorialspoint.com/design_pattern/images/interpreter_pattern_uml_diagram.jpg)<br />
+*Figure from* [Design Pattern Tutorial](https://www.tutorialspoint.com/design_pattern/factory_pattern.htm)
 ######Step to apply algorithm by HEDGHOG
 ![](https://cloud.githubusercontent.com/assets/17581141/20803438/157239fa-b7a4-11e6-97f7-2791dd9e6e52.PNG)<br />
 *Figure from* [Research papers of Alex Blewitt](http://www.bandlem.com/Alex/Papers/PhDThesis.pdf)
