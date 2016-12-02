@@ -40,7 +40,12 @@ free library as well. Since my project will work on plug-in, so I created Parser
 [Eclipse RCP Tutorial](http://www.vogella.com/tutorials/EclipseRCP/article.html) <br />
 [Abstract Syntax Tree](http://www.eclipse.org/articles/article.php?file=Article-JavaCodeManipulation_AST/index.html)<br />
 [Create Marker for Plug-in](https://www.ibm.com/developerworks/opensource/tutorials/os-eclipse-plugin-guide/#listing1)<br />
-[Design Pattern Tutorial](https://www.tutorialspoint.com/design_pattern/factory_pattern.htm)
+[Design Pattern Tutorial](https://www.tutorialspoint.com/design_pattern/factory_pattern.htm)<br />
+[Work with Abstract Syntax Tree](http://www.vogella.com/tutorials/EclipseJDT/article.html)<br />
+[Format code by JDT](http://www.programcreek.com/2013/04/how-to-format-java-code-by-using-eclipse-jdt/)<br />
+[Work with JavaParser](http://tomassetti.me/getting-started-with-javaparser-analyzing-java-code-programmatically/)<br />
+[Plug in developer guide](http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Fguide%2FresAdv_markers.htm)<br />
+[Implement with IFile](http://www.programcreek.com/java-api-examples/org.eclipse.core.resources.IFile)
 
 ######Research papers related this project:
 [HEDGEHOG] (http://www.bandlem.com/Alex/Papers/PhDThesis.pdf)
