@@ -13,7 +13,7 @@ ___
 
 ####Example result
 Regarding Factory Pattern, we should not call implemented class from interface directly. We should call ShapFactory class in order to use this implemented objects<br />
-![](https://cloud.githubusercontent.com/assets/17581141/20852296/f856f4fe-b899-11e6-992d-d5cde3ec6689.png)
+![](https://cloud.githubusercontent.com/assets/17581141/20852296/f856f4fe-b899-11e6-992d-d5cde3ec6689.png)<br />
 After run the plug-in, the plug-in will add mark at the line that code is wrote wrongly, and give recommendation for correct the wrong pattern<br />
 ![](https://cloud.githubusercontent.com/assets/17581141/20852299/fc288228-b899-11e6-90a8-826250c8a7c6.png)
 
