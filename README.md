@@ -63,9 +63,6 @@ ___
 ######Factory Design Pattern
 ![](https://www.tutorialspoint.com/design_pattern/images/factory_pattern_uml_diagram.jpg)<br />
 *Figure from* [Design Pattern Tutorial](https://www.tutorialspoint.com/design_pattern/factory_pattern.htm)
-######Interpreter Design Pattern
-![](https://www.tutorialspoint.com/design_pattern/images/interpreter_pattern_uml_diagram.jpg)<br />
-*Figure from* [Design Pattern Tutorial](https://www.tutorialspoint.com/design_pattern/factory_pattern.htm)
 ######Step to apply algorithm by HEDGHOG
 ![](https://cloud.githubusercontent.com/assets/17581141/20803438/157239fa-b7a4-11e6-97f7-2791dd9e6e52.PNG)<br />
 *Figure from* [Research papers of Alex Blewitt](http://www.bandlem.com/Alex/Papers/PhDThesis.pdf)
